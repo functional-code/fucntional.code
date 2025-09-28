@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    
+}
+#main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+#sidehead{
+    display: flex;
+    
+    justify-content: center;
+    background: #3750b7;
+    height:100%;
+    width: 30%;
+}
+
+#mainhead{
+    height: 100%;
+    width: 70%;
+}
+
+.dp{
+    margin: 30px;
+    object-fit: cover;
+    border: 10px solid white;
+    border-radius: 50% ;
+    height:200px;
+    width: 200px;
+}

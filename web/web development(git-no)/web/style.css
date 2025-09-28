@@ -1,0 +1,107 @@
+html, body {
+  height: 100%;
+  width: 100%;  
+}
+
+
+#main{
+    height: 100%;
+    width: 100%;
+
+}
+
+
+#whiteray{
+    height: 40%;
+    width: 100%;
+    background-color: aliceblue;
+}
+
+#acces{
+    display: flex;
+    height: 15%;
+    width: 100%;
+    
+}
+
+h3{
+    margin: auto;
+}
+#content{
+    display: flex;
+    height: 100%;
+    width: 35%;
+}
+
+#fill{
+    height: 100%;
+    width: 45%;
+}
+
+.mar{
+    margin-left: 2px solid black;
+}
+#sector{
+    display: flex;
+    align-items: end;
+    height: 100%;
+    width: 20%;
+}
+#indexx{
+
+    display: flex;
+    height: 25%;
+    width: 100%;
+    background-color: brown;
+    
+}
+
+#png{
+    height: 100%;
+    width: auto;
+    padding: 20px ;
+
+}
+
+#find{
+    align-items: center;
+    border: 9px solid black;
+    height: 100%;
+    width: 60%;
+}
+#find1{
+    margin-top: 15px;
+    width: 70%;
+    height: 45%;
+    margin-left: 15%;
+}
+
+#account{
+    border: 5px solid black;
+}
+
+
+
+
+
+
+#producsscroll{
+     height: 15%;
+    width: 100%;
+   
+}
+
+#runway{
+    height: 65%;
+    width: 100%;
+    
+}
+
+
+
+
+#blueray{
+    height: 60%;
+    width: 100%;
+    
+}
