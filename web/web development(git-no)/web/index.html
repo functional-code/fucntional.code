@@ -1,50 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CityPulse — Local Issue Reporting & Impact Tracker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f7fa;
+      color: #333;
+    }
 
-    <link rel="stylesheet" href="style.css">
+    header {
+      background-color: #004aad;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
 
-    <title>Document</title>
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .img{
+         background-image: src="use" ;
+    padding: 12px;
+    background: rgba(255,255,255,0.25);   /* translucent so backdrop shows */
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);           /* blurs what's behind the element */
+    border-radius: 8px;
+    
+
+
+    }
+
+    main p {
+      max-width: 600px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .btn {
+      background-color: #004aad;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0066ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #e9eef5;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
-    <div id="main">
-        <div id="whiteray">
-            <div id="acces">
-                <div id="content">
-                    <h3>Product</h3>
-                    <h3>Solution</h3>
-                    <h3>Service</h3>
-                    <h3>Support</h3>
-                    <h3>About Lenevo</h3>
-                    <h3>Deals</h3>
-                </div>
-                <div id="fill">
 
-                </div>
-                <div id="sector">
-                    <h3 .class="mar">business</h3>
-                    <h3 .class="mar">Student</h3>
-                    <h3 .class="mar">Gmaing</h3>
-                </div>
-            </div>
-            <div id="indexx">
-                <div id="png"><img src="https://p3-ofp.static.pub/fes/cms/2023/03/22/8hjmcte754uauw07ypikjkjtx0m5ib450914.svg" alt=""></div>
-                <div id="find">
-                    <input id="find1" type="text">
-                </div>
-                <div id="account"></div>
-            </div>
-            <div id="producsscroll"></div>
-            <div id="runway"></div>
-            <div></div>
-        </div>
+  <header>
+    <h1>CityPulse</h1>
+    <p>Local Issue Reporting & Impact Tracker</p>
+  </header>
 
-            <div id="blueray"></div>
+  <main class="img">
+    <h2>Welcome to CityPulse</h2>
+    <p>
+      Empowering citizens to make their city better.  
+      Report local issues, track progress, and see how community-driven actions make a difference.
+    </p>
 
-
+    <div class="buttons">
+      <button class="btn" onclick="location.href='./admin/admin.html'">Admin Login</button>
+      <button class="btn" onclick="location.href='./user.html'">User Login</button>
     </div>
-    
-</body>
-</html>
+  </main>
+
+  <footer>
+    © 20
