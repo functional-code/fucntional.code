@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Complaint</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    h2 {
+      text-align: center;
+      color: #007bff;
+    }
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-box">
+    <h2>Edit Complaint</h2>
+
+    <p><strong>Title:</strong> <span id="title"></span></p>
+    <p><strong>Category:</strong> <span id="category"></span></p>
+    <p><strong>Location:</strong> <span id="location"></span></p>
+
+    <label for="status">Update Status</label>
+    <select id="status">
+      <option>Pending</option>
+      <option>In Progress</option>
+      <option>Resolved</option>
+    </select>
+
+    <label for="comment">Admin Comment</label>
+    <textarea id="comment" rows="3" placeholder="Add comment..."></textarea>
+
+    <button onclick="saveEdit()">Save Changes</button>
+    <a href="admin.html">⬅ Back to Admin Page</a>
+  </div>
+
+  <script>
+    const index = localStorage.getItem("editIndex");
+    let complaints = JSON.parse(localStorage.getItem("complaints") || "[]");
+    const complaint = complaints[index];
+
+    // if (!complaint) {
+    //   alert("Complaint not found!");
+    //   window.location.href = "admin.html";
+    // }
+
+    document.getElementById("title").textContent = complaint.title;
+    document.getElementById("category").textContent = complaint.category;
+    document.getElementById("location").textContent = complaint.location;
+    document.getElementById("status").value = complaint.status || "Pending";
+    document.getElementById("comment").value = complaint.comment || "";
+
+    function saveEdit() {
+      complaint.status = document.getElementById("status").value;
+      complaint.comment = document.getElementById("comment").value;
+
+      complaints[index] = complaint;
+      localStorage.setItem("complaints", JSON.stringify(complaints));
+
+      alert("✅ Complaint updated successfully!");
+      window.location.href = "admin.html";
+    }
+  </script>
+
+</body>
+</html>

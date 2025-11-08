@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="admin-dashboard.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CityPulse Admin Dashboard</title>
+  
+</head>
+<body>
+  <header>
+    <h1>CityPulse — Admin Dashboard</h1>
+    <button class="logout-btn">Logout</button>
+  </header>
+
+  <div class="container">
+    <div class="sidebar">
+      <a href="#">🏠 Dashboard</a>
+      <a href="#">📋 Reported Issues</a>
+      <a href="#">👥 Users</a>
+      
+    </div>
+
+    <div class="main">
+      <h2>Reported Issues</h2>
+      <table id="userTable">
+        <tr>
+          <th>Name</th>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Location</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td>#101</td>
+          <td>Pothole on Main Street</td>
+          <td>Road</td>
+          <td>Panaji</td>
+          <td><span class="status pending">Pending</span></td>
+        </tr>
+        
+      </table>
+    </div>
+  </div>
+</body>
+<script src="admin-dashboard.js"></script>
+</html>

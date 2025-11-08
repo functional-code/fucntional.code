@@ -1,0 +1,142 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | FunctionalCity</title>
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+      width: 300px;
+    }
+
+    input {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      background: #38bdf8;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .captcha {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .captcha-code {
+      background: #1e293b;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .toggle {
+      cursor: pointer;
+      color: #38bdf8;
+      font-size: 0.9em;
+      display: block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username" required>
+
+      <input type="password" id="password" placeholder="Password" required>
+      <span class="toggle" onclick="togglePassword()">👁 Show Password</span>
+
+      <div class="captcha">
+        <span id="captcha" class="captcha-code"></span>
+        <button type="button" onclick="generateCaptcha()">↻</button>
+      </div>
+      <input type="text" id="captchaInput" placeholder="Enter CAPTCHA" required>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script>
+    // 🧩 Generate Random CAPTCHA
+    function generateCaptcha() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      let code = '';
+      for (let i = 0; i < 5; i++) code += chars[Math.floor(Math.random() * chars.length)];
+      document.getElementById("captcha").innerText = code;
+    }
+
+    // 👁 Toggle Password Visibility
+    function togglePassword() {
+      const pwd = document.getElementById("password");
+      const toggle = document.querySelector(".toggle");
+      if (pwd.type === "password") {
+        pwd.type = "text";
+        toggle.textContent = "🙈 Hide Password";
+      } else {
+        pwd.type = "password";
+        toggle.textContent = "👁 Show Password";
+      }
+    }
+
+    // 🧠 Handle Login
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const enteredCaptcha = document.getElementById("captchaInput").value.trim();
+      const actualCaptcha = document.getElementById("captcha").innerText.trim();
+
+      if (enteredCaptcha !== actualCaptcha) {
+        alert("❌ CAPTCHA does not match!");
+        generateCaptcha();
+        return;
+      }
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await response.json();
+      alert(data.message);
+    });
+
+    // Generate CAPTCHA on load
+    generateCaptcha();
+  </script>
+</body>
+</html>

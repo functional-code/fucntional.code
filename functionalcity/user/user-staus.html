@@ -1,0 +1,108 @@
+<!-- status.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Complaint Status | FunctionalCity</title>
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+      width: 350px;
+    }
+
+    input {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      background: #38bdf8;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .error {
+      color: #f87171;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Check Complaint Status</h2>
+    <input type="text" id="complaintId" placeholder="Enter Complaint ID" required>
+    <button onclick="checkStatus()">Check Status</button>
+
+    <div id="error" class="error"></div>
+
+    <div class="result" id="resultBox">
+      <h3>Complaint Details</h3>
+      <p><strong>Status:</strong> <span id="statusText"></span></p>
+      <p><strong>Admin Comment:</strong> <span id="commentText"></span></p>
+    </div>
+  </div>
+
+  <script>
+    async function checkStatus() {
+      const id = document.getElementById("complaintId").value.trim();
+      const errorDiv = document.getElementById("error");
+      const resultBox = document.getElementById("resultBox");
+
+      if (!id) {
+        errorDiv.textContent = "Please enter a Complaint ID!";
+        resultBox.style.display = "none";
+        return;
+      }
+
+      errorDiv.textContent = "";
+
+      try {
+        const response = await fetch(`http://localhost:3000/complaint/${id}`);
+        const data = await response.json();
+
+        if (data.error) {
+          errorDiv.textContent = data.error;
+          resultBox.style.display = "none";
+        } else {
+          document.getElementById("statusText").textContent = data.status;
+          document.getElementById("commentText").textContent = data.comment || "No comments yet";
+          resultBox.style.display = "block";
+        }
+      } catch (err) {
+        errorDiv.textContent = "Server error. Try again later.";
+      }
+    }
+  </script>
+</body>
+</html>

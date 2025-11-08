@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complaint Submission</title>
+  <link rel="stylesheet" href="complaint-submit.css">
+</head>
+<body>
+
+  <h1>Submit a Complaint</h1>
+
+  <div class="form-container">
+    <label for="name">Name</label>
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <label for="title">Complaint Title</label>
+    <input type="text" id="title" placeholder="Enter complaint title">
+
+    <label for="category">Category</label>
+    <select id="category">
+      <option value="">--Select Category--</option>
+      <option>Road</option>
+      <option>Water</option>
+      <option>Electricity</option>
+      <option>Waste Management</option>
+      <option>Other</option>
+    </select>
+
+    <!-- 📸 Image Upload -->
+    <label for="image">Upload Image</label>
+    <input type="file" id="image" accept="image/*" onchange="previewImage(event)">
+    <div id="imagePreviewContainer">
+      <img id="imagePreview" src="" alt="Preview will appear here" style="display:none; width:200px; margin-top:10px;">
+    </div>
+
+    <label for="location">Location</label>
+    <input type="text" id="location" placeholder="Enter location">
+
+    <h2>Find My Location</h2>
+    <button onclick="getLocation()">Get My Location</button>
+    <p id="output"></p>
+
+    <button onclick="addComplaint()">Submit Complaint</button>
+  </div>
+
+  <script src="complaint-submit.js"></script>
+</body>
+</html>
